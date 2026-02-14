@@ -81,12 +81,107 @@ img {
     color: white;
 }
 
+/* 表示形式の切り替え */
+.view-switcher {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin: 20px 0 30px;
+}
+
+.view-btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.view-btn.active {
+    background-color: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.view-btn span {
+    font-size: 1.1rem;
+}
+
 /* 記事セクション */
 .articles {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
     margin: 40px 0;
+}
+
+/* リスト表示 */
+.articles.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.articles.list-view .article-card {
+    border-radius: 0;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.articles.list-view .article-card:last-child {
+    border-bottom: none;
+}
+
+.articles.list-view .article-card__image {
+    display: none;
+}
+
+.articles.list-view .article-card__tag {
+    display: inline-block;
+    padding: 1px 6px;
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+}
+
+.articles.list-view .article-card__title {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.articles.list-view .article-card__description {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+    color: #888;
+}
+
+.articles.list-view .article-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    grid-row: 1 / -1;
+    grid-column: 2;
+}
+
+.articles.list-view .article-card__link {
+    display: none;
 }
 
 /* 記事カード */
@@ -224,6 +319,26 @@ img {
     .filter-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
+    }
+
+    .articles.list-view .article-card__content {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .articles.list-view .article-card__meta {
+        text-align: left;
+        grid-row: auto;
+        grid-column: 1;
+    }
+
+    .articles.list-view .article-card {
+        flex-direction: column;
+    }
+
+    .articles.list-view .article-card__image {
+        width: 100%;
+        height: 150px;
     }
 }
 

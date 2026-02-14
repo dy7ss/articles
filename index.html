@@ -23,80 +23,19 @@
             <button class="filter-btn" data-filter="tutorial">チュートリアル</button>
         </div>
 
+        <!-- 表示形式の切り替え -->
+        <div class="view-switcher">
+            <button class="view-btn active" data-view="grid" title="グリッド表示">
+                <span>⊞</span> グリッド
+            </button>
+            <button class="view-btn" data-view="list" title="リスト表示">
+                <span>≡</span> リスト
+            </button>
+        </div>
+
         <!-- 記事リスト -->
-        <section class="articles">
-            <!-- 記事カード（テンプレート） -->
-            <article class="article-card" data-category="tech">
-                <div class="article-card__image">
-                    <img src="images/placeholder.svg" alt="記事のイメージ">
-                </div>
-                <div class="article-card__content">
-                    <span class="article-card__tag">技術</span>
-                    <h2 class="article-card__title">JavaScriptの非同期処理を完全に理解する</h2>
-                    <p class="article-card__description">
-                        Promise、async/awaitなどの非同期処理パターンについて、基礎から実践的な応用まで詳しく解説します。
-                    </p>
-                    <div class="article-card__meta">
-                        <span class="article-card__date">2026-02-10</span>
-                        <span class="article-card__reading-time">8分</span>
-                    </div>
-                    <a href="#" class="article-card__link">記事を読む →</a>
-                </div>
-            </article>
-
-            <article class="article-card" data-category="thoughts">
-                <div class="article-card__image">
-                    <img src="images/placeholder.svg" alt="記事のイメージ">
-                </div>
-                <div class="article-card__content">
-                    <span class="article-card__tag">考察</span>
-                    <h2 class="article-card__title">モダンなWebフレームワークの選択について</h2>
-                    <p class="article-card__description">
-                        React、Vue、Svelteなど複数のフレームワークを比較し、プロジェクトに合わせた選択について考えます。
-                    </p>
-                    <div class="article-card__meta">
-                        <span class="article-card__date">2026-02-05</span>
-                        <span class="article-card__reading-time">5分</span>
-                    </div>
-                    <a href="#" class="article-card__link">記事を読む →</a>
-                </div>
-            </article>
-
-            <article class="article-card" data-category="tutorial">
-                <div class="article-card__image">
-                    <img src="images/placeholder.svg" alt="記事のイメージ">
-                </div>
-                <div class="article-card__content">
-                    <span class="article-card__tag">チュートリアル</span>
-                    <h2 class="article-card__title">初心者向けReact入門ガイド</h2>
-                    <p class="article-card__description">
-                        Reactの基本概念から簡単なアプリケーション開発まで、段階的に学べるチュートリアルです。
-                    </p>
-                    <div class="article-card__meta">
-                        <span class="article-card__date">2026-01-30</span>
-                        <span class="article-card__reading-time">12分</span>
-                    </div>
-                    <a href="#" class="article-card__link">記事を読む →</a>
-                </div>
-            </article>
-
-            <article class="article-card" data-category="tech">
-                <div class="article-card__image">
-                    <img src="images/placeholder.svg" alt="記事のイメージ">
-                </div>
-                <div class="article-card__content">
-                    <span class="article-card__tag">技術</span>
-                    <h2 class="article-card__title">パフォーマンス最適化のベストプラクティス</h2>
-                    <p class="article-card__description">
-                        Webアプリケーションの高速化に向けた実践的なテクニックと最新のツールについて紹介します。
-                    </p>
-                    <div class="article-card__meta">
-                        <span class="article-card__date">2026-01-25</span>
-                        <span class="article-card__reading-time">10分</span>
-                    </div>
-                    <a href="#" class="article-card__link">記事を読む →</a>
-                </div>
-            </article>
+        <section class="articles" id="articles-container">
+            <!-- JavaScriptで動的に生成されます -->
         </section>
     </main>
 

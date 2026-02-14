@@ -1,5 +1,49 @@
-// フィルター機能
-document.addEventListener('DOMContentLoaded', function() {
+// JSONから記事を読み込んで動的に生成
+async function loadArticles() {
+    try {
+        const response = await fetch('data/articles.json');
+        const articlesData = await response.json();
+        renderArticles(articlesData);
+        initializeFilters();
+        initializeViewSwitcher();
+    } catch (error) {
+        console.error('Error loading articles:', error);
+    }
+}
+
+// 記事をDOMに生成
+function renderArticles(articlesData) {
+    const container = document.getElementById('articles-container');
+    container.innerHTML = '';
+
+    articlesData.forEach(article => {
+        const articleElement = document.createElement('article');
+        articleElement.className = 'article-card';
+        articleElement.setAttribute('data-category', article.category);
+        articleElement.setAttribute('data-date', article.date);
+        articleElement.innerHTML = `
+            <div class="article-card__image">
+                <img src="${article.image}" alt="${article.title}">
+            </div>
+            <div class="article-card__content">
+                <span class="article-card__tag">${article.categoryLabel}</span>
+                <h2 class="article-card__title">${article.title}</h2>
+                <p class="article-card__description">
+                    ${article.description}
+                </p>
+                <div class="article-card__meta">
+                    <span class="article-card__date">${article.date}</span>
+                    <span class="article-card__reading-time">${article.readingTime}</span>
+                </div>
+                <a href="${article.link}" class="article-card__link">記事を読む →</a>
+            </div>
+        `;
+        container.appendChild(articleElement);
+    });
+}
+
+// フィルター機能の初期化
+function initializeFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const articles = document.querySelectorAll('.article-card');
 
@@ -30,6 +74,46 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+}
+
+// 表示形式の切り替え機能の初期化
+function initializeViewSwitcher() {
+    const viewButtons = document.querySelectorAll('.view-btn');
+
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const view = this.getAttribute('data-view');
+            const articlesSection = document.getElementById('articles-container');
+
+            // アクティブボタンを更新
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // 表示形式を切り替え
+            if (view === 'list') {
+                articlesSection.classList.add('list-view');
+            } else {
+                articlesSection.classList.remove('list-view');
+            }
+
+            // ローカルストレージに保存
+            localStorage.setItem('viewMode', view);
+        });
+    });
+
+    // 前回の表示形式を復元
+    const savedViewMode = localStorage.getItem('viewMode') || 'grid';
+    if (savedViewMode === 'list') {
+        const listViewBtn = document.querySelector('[data-view="list"]');
+        if (listViewBtn) {
+            listViewBtn.click();
+        }
+    }
+}
+
+// DOMContentLoaded時に実行
+document.addEventListener('DOMContentLoaded', function() {
+    loadArticles();
 });
 
 // スムーズスクロール

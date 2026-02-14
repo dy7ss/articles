@@ -13,13 +13,15 @@
 
 ```
 articles/
-├── index.html           # メインHTMLファイル
+├── index.html              # メインHTMLファイル
+├── data/
+│   └── articles.json      # 記事データ（JSONで管理）
 ├── src/
-│   ├── styles.css      # スタイルシート
-│   └── script.js       # JavaScriptスクリプト
+│   ├── styles.css         # スタイルシート
+│   └── script.js          # JavaScriptスクリプト
 ├── images/
-│   └── placeholder.svg # プレースホルダー画像
-└── README.md           # このファイル
+│   └── placeholder.svg    # プレースホルダー画像
+└── README.md              # このファイル
 ```
 
 ## 使い方
@@ -42,36 +44,45 @@ python -m SimpleHTTPServer 8000
 
 ### 記事を追加する
 
-`index.html` の `<section class="articles">` 内に、以下のようなカード要素を追加してください：
+HTMLは**直接編集せず**、`data/articles.json` に新しい記事オブジェクトを追加してください。
 
-```html
-<article class="article-card" data-category="tech">
-    <div class="article-card__image">
-        <img src="images/your-image.jpg" alt="説明">
-    </div>
-    <div class="article-card__content">
-        <span class="article-card__tag">タグ</span>
-        <h2 class="article-card__title">記事タイトル</h2>
-        <p class="article-card__description">記事の説明文</p>
-        <div class="article-card__meta">
-            <span class="article-card__date">2026-02-15</span>
-            <span class="article-card__reading-time">5分</span>
-        </div>
-        <a href="article-link.html" class="article-card__link">記事を読む →</a>
-    </div>
-</article>
+`data/articles.json` に以下のような要素を追加：
+
+```json
+{
+  "id": 5,
+  "title": "記事のタイトル",
+  "description": "記事の簡潔な説明文（1-2行）",
+  "category": "tech",
+  "categoryLabel": "技術",
+  "date": "2026-02-15",
+  "readingTime": "5分",
+  "image": "images/placeholder.svg",
+  "link": "articles/article-page.html"
+}
 ```
 
-### カテゴリを追加する
+**フィールドの説明:**
+- `id`: 一意の数値（他の記事と重複しない）
+- `title`: 記事のタイトル
+- `description`: 記事の概要（カード表示で見える部分）
+- `category`: フィルターで使用するカテゴリID（`tech`、`thoughts`、`tutorial` など）
+- `categoryLabel`: フィルターボタンに表示されるラベル（「技術」など）
+- `date`: 公開日（YYYY-MM-DD形式）
+- `readingTime`: 読了予想時間（「5分」など）
+- `image`: アイキャッチ画像のパス
+- `link`: 記事ページのパス
 
-1. `index.html` のフィルターボタンに新しいカテゴリを追加
-2. `data-category` 属性で記事にカテゴリを指定
+#### 新しいカテゴリを追加する場合
 
-### スタイルを変更する
+1. `data/articles.json` に新しい `category` と `categoryLabel` を指定
+2. `index.html` のフィルターボタンに対応する要素を追加：
 
-`src/styles.css` で色やレイアウトをカスタマイズできます。グラデーション色は現在：
-- Primary: `#667eea` (紫青)
-- Secondary: `#764ba2` (紫)
+```html
+<button class="filter-btn" data-filter="new-category">新しいカテゴリ</button>
+```
+
+JavaScriptが自動的に対応します。
 
 ## 今後の拡張予定
 
