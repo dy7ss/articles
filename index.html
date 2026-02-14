@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事一覧 - My Articles</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">My Articles</h1>
+            <p class="header__subtitle">記事一覧</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- フィルター -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">すべて</button>
+            <button class="filter-btn" data-filter="tech">技術</button>
+            <button class="filter-btn" data-filter="thoughts">考察</button>
+            <button class="filter-btn" data-filter="tutorial">チュートリアル</button>
+        </div>
+
+        <!-- 記事リスト -->
+        <section class="articles">
+            <!-- 記事カード（テンプレート） -->
+            <article class="article-card" data-category="tech">
+                <div class="article-card__image">
+                    <img src="images/placeholder.svg" alt="記事のイメージ">
+                </div>
+                <div class="article-card__content">
+                    <span class="article-card__tag">技術</span>
+                    <h2 class="article-card__title">JavaScriptの非同期処理を完全に理解する</h2>
+                    <p class="article-card__description">
+                        Promise、async/awaitなどの非同期処理パターンについて、基礎から実践的な応用まで詳しく解説します。
+                    </p>
+                    <div class="article-card__meta">
+                        <span class="article-card__date">2026-02-10</span>
+                        <span class="article-card__reading-time">8分</span>
+                    </div>
+                    <a href="#" class="article-card__link">記事を読む →</a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="thoughts">
+                <div class="article-card__image">
+                    <img src="images/placeholder.svg" alt="記事のイメージ">
+                </div>
+                <div class="article-card__content">
+                    <span class="article-card__tag">考察</span>
+                    <h2 class="article-card__title">モダンなWebフレームワークの選択について</h2>
+                    <p class="article-card__description">
+                        React、Vue、Svelteなど複数のフレームワークを比較し、プロジェクトに合わせた選択について考えます。
+                    </p>
+                    <div class="article-card__meta">
+                        <span class="article-card__date">2026-02-05</span>
+                        <span class="article-card__reading-time">5分</span>
+                    </div>
+                    <a href="#" class="article-card__link">記事を読む →</a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="tutorial">
+                <div class="article-card__image">
+                    <img src="images/placeholder.svg" alt="記事のイメージ">
+                </div>
+                <div class="article-card__content">
+                    <span class="article-card__tag">チュートリアル</span>
+                    <h2 class="article-card__title">初心者向けReact入門ガイド</h2>
+                    <p class="article-card__description">
+                        Reactの基本概念から簡単なアプリケーション開発まで、段階的に学べるチュートリアルです。
+                    </p>
+                    <div class="article-card__meta">
+                        <span class="article-card__date">2026-01-30</span>
+                        <span class="article-card__reading-time">12分</span>
+                    </div>
+                    <a href="#" class="article-card__link">記事を読む →</a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="tech">
+                <div class="article-card__image">
+                    <img src="images/placeholder.svg" alt="記事のイメージ">
+                </div>
+                <div class="article-card__content">
+                    <span class="article-card__tag">技術</span>
+                    <h2 class="article-card__title">パフォーマンス最適化のベストプラクティス</h2>
+                    <p class="article-card__description">
+                        Webアプリケーションの高速化に向けた実践的なテクニックと最新のツールについて紹介します。
+                    </p>
+                    <div class="article-card__meta">
+                        <span class="article-card__date">2026-01-25</span>
+                        <span class="article-card__reading-time">10分</span>
+                    </div>
+                    <a href="#" class="article-card__link">記事を読む →</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 My Articles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/script.js"></script>
+</body>
+</html>

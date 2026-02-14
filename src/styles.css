@@ -1,0 +1,246 @@
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ヘッダー */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.header__title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.header__subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* フィルター */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: #333;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.filter-btn.active {
+    background-color: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+/* 記事セクション */
+.articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* 記事カード */
+.article-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.article-card__image {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+}
+
+.article-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-card__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.article-card__tag {
+    display: inline-block;
+    background-color: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.article-card__title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #222;
+    line-height: 1.4;
+}
+
+.article-card__description {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.article-card__meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.article-card__date {
+    display: flex;
+    align-items: center;
+}
+
+.article-card__date::before {
+    content: "📅 ";
+    margin-right: 5px;
+}
+
+.article-card__reading-time {
+    display: flex;
+    align-items: center;
+}
+
+.article-card__reading-time::before {
+    content: "⏱️ ";
+    margin-right: 5px;
+}
+
+.article-card__link {
+    display: inline-block;
+    color: #667eea;
+    font-weight: 600;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.article-card__link:hover {
+    color: #764ba2;
+}
+
+/* 非表示状態 */
+.article-card.hidden {
+    display: none;
+}
+
+/* フッター */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .header__title {
+        font-size: 2rem;
+    }
+
+    .articles {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__title {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        padding: 40px 0;
+    }
+
+    .article-card__title {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
