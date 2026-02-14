@@ -4,11 +4,23 @@ async function loadArticles() {
         const response = await fetch('data/articles.json');
         const articlesData = await response.json();
         renderArticles(articlesData);
+        renderFilters(articlesData);
         initializeFilters();
         initializeViewSwitcher();
     } catch (error) {
         console.error('Error loading articles:', error);
     }
+}
+
+// JSONからユニークなカテゴリを抽出
+function extractCategories(articlesData) {
+    const categoriesSet = new Set();
+    articlesData.forEach(article => {
+        article.categories.forEach(category => {
+            categoriesSet.add(category);
+        });
+    });
+    return Array.from(categoriesSet).sort();
 }
 
 // 記事をDOMに生成
@@ -50,6 +62,21 @@ function renderArticles(articlesData) {
             </div>
         `;
         container.appendChild(articleElement);
+    });
+}
+
+// フィルターボタンを動的に生成
+function renderFilters(articlesData) {
+    const container = document.getElementById('filters-container');
+    const categories = extractCategories(articlesData);
+    
+    // 既存のボタン（「すべて」）の後に新しいボタンを追加
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.className = 'filter-btn';
+        button.setAttribute('data-filter', category);
+        button.textContent = category;
+        container.appendChild(button);
     });
 }
 
