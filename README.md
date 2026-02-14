@@ -53,8 +53,7 @@ HTMLは**直接編集せず**、`data/articles.json` に新しい記事オブジ
   "id": 5,
   "title": "記事のタイトル",
   "description": "記事の簡潔な説明文（1-2行）",
-  "category": "tech",
-  "categoryLabel": "技術",
+  "categories": ["技術", "チュートリアル"],
   "date": "2026-02-15",
   "readingTime": "5分",
   "image": "images/placeholder.svg",
@@ -66,20 +65,25 @@ HTMLは**直接編集せず**、`data/articles.json` に新しい記事オブジ
 - `id`: 一意の数値（他の記事と重複しない）
 - `title`: 記事のタイトル
 - `description`: 記事の概要（カード表示で見える部分）
-- `category`: フィルターで使用するカテゴリID（`tech`、`thoughts`、`tutorial` など）
-- `categoryLabel`: フィルターボタンに表示されるラベル（「技術」など）
+- `categories`: 記事に属するカテゴリの配列（複数指定可能）
 - `date`: 公開日（YYYY-MM-DD形式）
 - `readingTime`: 読了予想時間（「5分」など）
 - `image`: アイキャッチ画像のパス
 - `link`: 記事ページのパス
 
+#### 複数カテゴリを指定する
+
+```json
+"categories": ["技術", "チュートリアル"]
+```
+
 #### 新しいカテゴリを追加する場合
 
-1. `data/articles.json` に新しい `category` と `categoryLabel` を指定
+1. `data/articles.json` に新しいカテゴリ名を指定
 2. `index.html` のフィルターボタンに対応する要素を追加：
 
 ```html
-<button class="filter-btn" data-filter="new-category">新しいカテゴリ</button>
+<button class="filter-btn" data-filter="新しいカテゴリ">新しいカテゴリ</button>
 ```
 
 JavaScriptが自動的に対応します。

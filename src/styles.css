@@ -154,7 +154,8 @@ img {
     display: inline-block;
     padding: 1px 6px;
     font-size: 0.7rem;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    margin-right: 4px;
 }
 
 .articles.list-view .article-card__title {
@@ -220,6 +221,13 @@ img {
     flex-grow: 1;
 }
 
+.article-card__tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
 .article-card__tag {
     display: inline-block;
     background-color: #667eea;
@@ -228,7 +236,6 @@ img {
     border-radius: 15px;
     font-size: 0.85rem;
     font-weight: 600;
-    margin-bottom: 10px;
     width: fit-content;
 }
 
@@ -290,6 +297,15 @@ img {
 /* 非表示状態 */
 .article-card.hidden {
     display: none;
+}
+
+/* リスト表示時は非表示状態を解除 */
+.articles.list-view .article-card.hidden {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
 }
 
 /* フッター */

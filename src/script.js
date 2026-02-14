@@ -19,14 +19,25 @@ function renderArticles(articlesData) {
     articlesData.forEach(article => {
         const articleElement = document.createElement('article');
         articleElement.className = 'article-card';
-        articleElement.setAttribute('data-category', article.category);
+        
+        // 複数カテゴリに対応: data-categoryに全カテゴリをスペース区切りで設定
+        const categoryNames = article.categories.join(' ');
+        articleElement.setAttribute('data-category', categoryNames);
         articleElement.setAttribute('data-date', article.date);
+        
+        // タグ表示用にすべてのカテゴリをレンダリング
+        const tagsHtml = article.categories.map(cat => 
+            `<span class="article-card__tag">${cat}</span>`
+        ).join('');
+        
         articleElement.innerHTML = `
             <div class="article-card__image">
                 <img src="${article.image}" alt="${article.title}">
             </div>
             <div class="article-card__content">
-                <span class="article-card__tag">${article.categoryLabel}</span>
+                <div class="article-card__tags">
+                    ${tagsHtml}
+                </div>
                 <h2 class="article-card__title">${article.title}</h2>
                 <p class="article-card__description">
                     ${article.description}
@@ -57,9 +68,9 @@ function initializeFilters() {
 
             // 記事の表示・非表示を切り替え
             articles.forEach(article => {
-                const category = article.getAttribute('data-category');
+                const categories = article.getAttribute('data-category').split(' ');
 
-                if (filter === 'all' || category === filter) {
+                if (filter === 'all' || categories.includes(filter)) {
                     article.classList.remove('hidden');
                     // アニメーション用にタイミングを調整
                     setTimeout(() => {
